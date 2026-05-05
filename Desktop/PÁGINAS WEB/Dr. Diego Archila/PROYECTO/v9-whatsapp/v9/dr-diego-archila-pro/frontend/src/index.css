@@ -1,0 +1,263 @@
+/* =====================================================================
+   index.css — Sistema de diseño (modo claro único)
+   ---------------------------------------------------------------------
+   Paleta dorado/crema sobre fondo crema. Sin tema oscuro.
+   ===================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* superficies (cremas / beige del diseño de referencia) */
+  --black: #f5ead4;          /* fondo principal de la web */
+  --carbon: #efe1c5;         /* fondo footer/header al hacer scroll */
+  --graphite: #fbf5e8;       /* tarjetas claras */
+  --graphite-mid: #f0e3c8;   /* hover */
+  --graphite-light: #e8d9b8;
+  --surface: #fbf5e8;
+
+  /* bordes */
+  --border: rgba(94,68,30,0.14);
+  --border-light: rgba(94,68,30,0.28);
+
+  /* texto (oscuro sobre crema) */
+  --white: #3a2e1f;
+  --white-90: rgba(58,46,31,0.92);
+  --white-60: rgba(58,46,31,0.65);
+  --white-40: rgba(58,46,31,0.45);
+  --white-20: rgba(58,46,31,0.20);
+  --white-10: rgba(58,46,31,0.07);
+
+  /* dorado intenso para contrastar sobre crema */
+  --accent: #8c6a2d;
+  --accent-light: #b08a3e;
+  --accent-strong: #6f5320;
+  --accent-dim: rgba(140,106,45,0.20);
+  --accent-glow: rgba(140,106,45,0.10);
+
+  /* aliases legacy */
+  --violet: #b08a3e;
+  --violet-dim: rgba(176,138,62,0.18);
+  --clinical: #6f5320;
+  --gold: #8c6a2d;
+  --gold-light: #b08a3e;
+  --gold-dim: rgba(140,106,45,0.20);
+  --gold-glow: rgba(140,106,45,0.10);
+
+  /* gradientes dorados */
+  --accent-gradient: linear-gradient(135deg, #6f5320 0%, #b08a3e 50%, #8c6a2d 100%);
+  --accent-gradient-text: linear-gradient(135deg, #8c6a2d 0%, #6f5320 60%, #b08a3e 100%);
+  --accent-gradient-hover: linear-gradient(135deg, #b08a3e 0%, #8c6a2d 50%, #6f5320 100%);
+
+  --font-display: 'Cormorant Garamond', 'Georgia', serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  --radius: 4px;
+  --radius-lg: 10px;
+  --radius-xl: 18px;
+
+  --shadow: 0 4px 40px rgba(94,68,30,0.18);
+  --shadow-accent: 0 0 40px rgba(140,106,45,0.18);
+
+  --bg-page: var(--black);
+  --bg-elevated: rgba(255,255,255,0.55);
+  --btn-primary-text: #fbf5e8;
+  --header-bg: rgba(245,234,212,0.92);
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background: var(--bg-page);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font-family: var(--font-body); cursor: pointer; border: none; background: none; color: inherit; }
+input, select, textarea { font-family: var(--font-body); }
+
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ---------- BUTTONS ---------- */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: var(--accent-gradient);
+  color: var(--btn-primary-text);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.18s, box-shadow 0.25s, color 0.25s;
+}
+.btn-primary:hover {
+  background: var(--accent-gradient-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px var(--accent-dim);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: transparent;
+  color: var(--white-90);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-light);
+  cursor: pointer;
+  transition: border-color 0.25s, color 0.25s, background 0.25s;
+}
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-glow);
+}
+
+/* ---------- LABELS / HEADINGS ---------- */
+.section-label {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: var(--accent-gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+}
+
+.gold-line {
+  width: 32px;
+  height: 1px;
+  background: var(--accent-gradient);
+  margin-bottom: 1.4rem;
+  opacity: 0.9;
+}
+
+.section-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+.section-heading em {
+  font-style: italic;
+  background: var(--accent-gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: var(--accent);
+}
+
+.section-desc {
+  color: var(--white-60);
+  font-size: 0.9rem;
+  line-height: 1.85;
+  max-width: 560px;
+}
+
+.section { padding: 6rem 0; }
+.section__header { margin-bottom: 3.5rem; }
+.section__cta { text-align: center; margin-top: 3rem; }
+
+/* ---------- GLASS CARD ---------- */
+.glass-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(12px);
+}
+
+/* ---------- PAGE HERO ---------- */
+.page-hero {
+  padding: 7rem 0 3.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.page-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.page-hero__title em {
+  font-style: italic;
+  background: var(--accent-gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: var(--accent);
+}
+.page-hero__sub {
+  color: var(--white-60);
+  font-size: 0.92rem;
+  max-width: 540px;
+  line-height: 1.8;
+}
+
+/* ---------- ANIMATIONS ---------- */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.animate-fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.animate-fade-in {
+  opacity: 0;
+  transition: opacity 0.8s var(--ease-out);
+}
+.animate-fade-up.visible,
+.animate-fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-enter {
+  animation: fadeIn 0.4s var(--ease-out) both;
+}
+
+@media (max-width: 768px) {
+  .section { padding: 4rem 0; }
+  .container { padding: 0 1.25rem; }
+  .page-hero { padding: 5.5rem 0 2.5rem; }
+}
